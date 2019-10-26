@@ -1,6 +1,8 @@
 # SoftUniMachineLearning2019
 Machine Learning @ SoftUni - September 2019
 
+0. Course Introduction
+
 1. Introduction to Machine Learning
 
 2. Linear and Logistic Regression
