@@ -3,10 +3,30 @@
 #include <opencv2/ml.hpp>
 
 int main(int argc, char *argv[]) {
-  auto raw_data = cv::ml::TrainData::loadFromCSV("iris.data", 0);
+  constexpr auto file_name = "iris.data";
+
+  // Default responses column = last
+  // Variables types set according to OpenCV rules
+  // Default delimiter = ','
+  // Default missing data fill = '?'
+  auto raw_data = cv::ml::TrainData::loadFromCSV(file_name,
+                                                 0 // Header lines not to be read as data
+                                                 );
+
+  const int n_samples = raw_data->getNSamples();
+  if (n_samples == 0) {
+    std::cerr << "Could not read file: " << file_name << std::endl;
+    exit(-1);
+  }
+
+  std::cout << "Read " << n_samples << " samples from " << file_name << std::endl;
 
   cv::Mat attributes_data = raw_data->getSamples();
   cv::Mat labels_data = raw_data->getResponses();
+
+  // Labels are reference object so being modified during training
+  // Thus the initial data need to be explicitly cloned from them
+  cv::Mat initial_labels_data = labels_data.clone();
 
   std::cout << "Data loaded" << std::endl;
 
@@ -24,7 +44,7 @@ int main(int argc, char *argv[]) {
 
   auto logistic_regression = cv::ml::LogisticRegression::create();
 
-  logistic_regression->setLearningRate(0.1);
+  logistic_regression->setLearningRate(0.5);
   logistic_regression->setIterations(100000);
 
   // Other values: cv::ml::LogisticRegression::REG_L1, REG_DISABLE , REG_L2
@@ -45,7 +65,8 @@ int main(int argc, char *argv[]) {
 
   // For regression models the error is computed as RMS,
   // for classifiers - as a percent of missclassified samples (0%-100%).
-  std::cout << "Missclassified samples, %: " << logistic_regression->calcError(raw_data, true, labels_data)
+  // False - tested only on train data (all the data in this implementation)
+  std::cout << "Missclassified samples, %: " << logistic_regression->calcError(raw_data, false, labels_data)
             << std::endl;
 
   logistic_regression->save("my.xml");
@@ -54,8 +75,9 @@ int main(int argc, char *argv[]) {
 
   for (int i = 0; i < labels_data.rows; i++) {
     const auto predicted = logistic_regression->predict(attributes_data.row(i));
-    const auto expected = labels_data.at<float>(i, 0);
-    std::cout << "Predicted: " << predicted << "  Expected: " << expected << std::endl;
+    const auto expected = initial_labels_data.at<float>(i, 0);
+    if (predicted != expected)
+        std::cout << "Predicted: " << predicted << "  Expected: " << expected << std::endl;
   }
 
   std::cout << "Done." << std::endl;
