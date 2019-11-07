@@ -21,12 +21,8 @@ int main(int argc, char *argv[]) {
 
   std::cout << "Read " << n_samples << " samples from " << file_name << std::endl;
 
-  cv::Mat attributes_data = raw_data->getSamples();
-  cv::Mat labels_data = raw_data->getResponses();
-
-  // Labels are reference object so being modified during training
-  // Thus the initial data need to be explicitly cloned from them
-  cv::Mat initial_labels_data = labels_data.clone();
+  const cv::Mat attributes_data = raw_data->getSamples();
+  const cv::Mat labels_data = raw_data->getResponses();
 
   std::cout << "Data loaded" << std::endl;
 
@@ -66,7 +62,8 @@ int main(int argc, char *argv[]) {
   // For regression models the error is computed as RMS,
   // for classifiers - as a percent of missclassified samples (0%-100%).
   // False - tested only on train data (all the data in this implementation)
-  std::cout << "Missclassified samples, %: " << logistic_regression->calcError(raw_data, false, labels_data)
+  // Last argument - array to store the prediction results
+  std::cout << "Missclassified samples, %: " << logistic_regression->calcError(raw_data, false, cv::noArray())
             << std::endl;
 
   logistic_regression->save("my.xml");
@@ -75,7 +72,7 @@ int main(int argc, char *argv[]) {
 
   for (int i = 0; i < labels_data.rows; i++) {
     const auto predicted = logistic_regression->predict(attributes_data.row(i));
-    const auto expected = initial_labels_data.at<float>(i, 0);
+    const auto expected = labels_data.at<float>(i, 0);
     if (predicted != expected)
         std::cout << "Predicted: " << predicted << "  Expected: " << expected << std::endl;
   }

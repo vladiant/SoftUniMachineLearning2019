@@ -1,5 +1,5 @@
 project(OpenCV_ML_LogisticsRegression)
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.1)
 
 find_package( OpenCV REQUIRED )
 
