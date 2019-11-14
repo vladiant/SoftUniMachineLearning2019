@@ -114,6 +114,7 @@ int main(int argc, char* argv[]) {
   //  svm_model->setTermCriteria()
 
   //  SVM formulation, Default SVM::C_SVC
+  //  C_SVC, NU_SVC, ONE_CLASS, EPS_SVR, NU_SVR
   //  svm_model->setType()
 
   std::cout << "Start traning" << std::endl;
