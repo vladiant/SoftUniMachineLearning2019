@@ -1,0 +1,21 @@
+https://archive.ics.uci.edu/ml/datasets/Geo-Magnetic+field+and+WLAN+dataset+for+indoor+localisation+from+wristband+and+smartphone#
+
+Geo-Magnetic field and WLAN dataset for indoor localisation from wristband and smartphone Data Set
+
+Relevant Papers:
+
+Barsocchi, P., Crivello, A., La Rosa, D., & Palumbo, F. (2016, October). A multisource and multivariate dataset for indoor localization methods based on WLAN and geo-magnetic field fingerprinting. In Indoor Positioning and Indoor Navigation (IPIN), 2016 International Conference on (pp. 1-8). IEEE.
+
+
+
+Citation Request:
+
+Barsocchi, P., Crivello, A., La Rosa, D., & Palumbo, F. (2016, October). A multisource and multivariate dataset for indoor localization methods based on WLAN and geo-magnetic field fingerprinting. In Indoor Positioning and Indoor Navigation (IPIN), 2016 International Conference on (pp. 1-8). IEEE.
+
+Indoor localization is a key topic for the Ambient Intelligence (AmI) research community. In this scenarios, recent advancements in wearable technologies, particularly smartwatches with built-in sensors, and personal devices, such as smartphones, are being seen as the breakthrough for making concrete the envisioned Smart Environment (SE) paradigm. In particular, scenarios devoted to indoor localization represent a key challenge to be addressed. Many works try to solve the indoor localization issue, but the lack of a common dataset or frameworks to compare and evaluate solutions represent a big barrier to be overcome in the ﬁeld. The unavailability and uncertainty of publicdatasetshindersthepossibilitytocomparedifferentindoor localization algorithms. This constitutes the main motivation of the proposed dataset described herein. We collected Wi-Fi and geo-magnetic ﬁeld ﬁngerprints, together with inertial sensor data during two campaigns performed in the same environment. Retrievingsincronizeddatafromasmartwatchandasmartphone worn by users at the purpose of create and present a public available dataset is the goal of this work.
+
+
+I. Introduction
+The community of makers is pushing the market of mobile devices toward a new era. As a matter of fact, the last decade have been characterized by a vibrant proliferation of embedded sensing technologies in mobile devices. Moreover, smartphones and in general other mobile devices are by their own nature ubiquitous, and applications able to leverage contextual information, such as location, become increasingly powerful. Indoor Localization Systems (ILSs) have proved to be essential in Ambient Assisted Living (AAL) scenarios [1]–[3], robotic applications [3], [4], and indoor navigation in large environments such as airports, malls, and campuses [5]. Beyond the widespread use of GPS location systems, which are incredibly useful outdoors, GPS signal is partially blocked, thus reducing precision in indoor environments.
+
+
