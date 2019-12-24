@@ -18,3 +18,4 @@
 * [Youtube: Andrew Ng: Artificial Intelligence is the New Electricity](https://www.youtube.com/watch?v=21EiKfQYZXc)
 * [Youtube List: CS230: Deep Learning | Autumn 2018](https://www.youtube.com/playlist?list=PLoROMvodv4rOABXSygHTsbvUz4G_YQhOb)
 * [Youtube List: MIT 6.S191: Introduction to Deep Learning](https://www.youtube.com/playlist?list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI)
+* [10 minutes to pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html)
