@@ -14,4 +14,8 @@
 * [Validation curves: plotting scores to evaluate models](https://scikit-learn.org/stable/modules/learning_curve.html)
 * [What are the ways to reduce the run-time to train a model in deep learning?](https://www.quora.com/What-are-the-ways-to-reduce-the-run-time-to-train-a-model-in-deep-learning)
 * [Tutorial: Learning Curves for Machine Learning in Python](https://www.dataquest.io/blog/learning-curves-machine-learning/)
+* [How to Use ROC Curves and Precision-Recall Curves for Classification in Python](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/)
 * [Metrics and scoring: quantifying the quality of predictions](https://scikit-learn.org/stable/modules/model_evaluation.html)
+* [Preprocessing data](https://scikit-learn.org/stable/modules/preprocessing.html)
+* [StratifiedKFold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html)
+* [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
