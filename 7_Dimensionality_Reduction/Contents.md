@@ -14,3 +14,4 @@
 * [Faces recognition example using eigenfaces and SVMs](https://scikit-learn.org/stable/auto_examples/applications/plot_face_recognition.html)
 * [Topic extraction with Non-negative Matrix Factorization and Latent Dirichlet Allocation](https://scikit-learn.org/stable/auto_examples/applications/plot_topics_extraction_with_nmf_lda.html)
 * [Novelty and Outlier Detection](https://scikit-learn.org/stable/modules/outlier_detection.html)
+* [OpenCV PCA example](https://docs.opencv.org/3.4/da/d94/samples_2cpp_2tutorial_code_2ml_2introduction_to_pca_2introduction_to_pca_8cpp-example.html)
