@@ -20,3 +20,5 @@
 * [Youtube List: MIT 6.S191: Introduction to Deep Learning](https://www.youtube.com/playlist?list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI)
 * [10 minutes to pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html)
 * [OpenCV Machine Learning Examples](https://docs.opencv.org/3.2.0/d1/d69/tutorial_table_of_content_ml.html)
+* [bytefish: Machine Learning with OpenCV](https://bytefish.de/blog/machine_learning_opencv/)
+* [bytefish/opencv](https://github.com/bytefish/opencv)
