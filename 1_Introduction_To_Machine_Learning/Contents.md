@@ -22,3 +22,5 @@
 * [OpenCV Machine Learning Examples](https://docs.opencv.org/3.2.0/d1/d69/tutorial_table_of_content_ml.html)
 * [bytefish: Machine Learning with OpenCV](https://bytefish.de/blog/machine_learning_opencv/)
 * [bytefish/opencv](https://github.com/bytefish/opencv)
+* [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets.php)
+* [20 Free Image Datasets for Computer Vision](https://lionbridge.ai/datasets/20-best-image-datasets-for-computer-vision/)
