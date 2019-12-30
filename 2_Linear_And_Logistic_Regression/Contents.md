@@ -13,3 +13,5 @@
 * [axes_demo](https://matplotlib.org/examples/pylab_examples/axes_demo.html)
 * [Sample plots in Matplotlib](https://matplotlib.org/3.1.0/tutorials/introductory/sample_plots.html)
 * [mplot3d tutorial](https://matplotlib.org/mpl_toolkits/mplot3d/tutorial.html)
+* [Iris Dataset](https://archive.ics.uci.edu/ml/machine-learning-databases/iris/)
+* [Housing Dataset](https://archive.ics.uci.edu/ml/machine-learning-databases/housing/)
