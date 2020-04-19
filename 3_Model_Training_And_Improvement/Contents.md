@@ -10,6 +10,7 @@
 ## Links
 * [A Statistical Analysis & ML workflow of Titanic](https://www.kaggle.com/masumrumi/a-statistical-analysis-ml-workflow-of-titanic)
 * [How to Tackle Your Next Regression Problem](https://towardsdatascience.com/model-assumptions-for-regression-problems-e4591af44901)
+* [How to Calculate Precision, Recall, and F-Measure for Imbalanced Classification](https://machinelearningmastery.com/precision-recall-and-f-measure-for-imbalanced-classification/)
 * [Stratified sampling](https://en.wikipedia.org/wiki/Stratified_sampling)
 * [StratifiedKFold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html)
 * [Validation curves: plotting scores to evaluate models](https://scikit-learn.org/stable/modules/learning_curve.html)
