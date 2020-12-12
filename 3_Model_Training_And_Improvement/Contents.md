@@ -10,6 +10,7 @@
 ## Links
 * [A Statistical Analysis & ML workflow of Titanic](https://www.kaggle.com/masumrumi/a-statistical-analysis-ml-workflow-of-titanic)
 * [How to Tackle Your Next Regression Problem](https://towardsdatascience.com/model-assumptions-for-regression-problems-e4591af44901)
+* [How to Calculate Precision, Recall, and F-Measure for Imbalanced Classification](https://machinelearningmastery.com/precision-recall-and-f-measure-for-imbalanced-classification/)
 * [Stratified sampling](https://en.wikipedia.org/wiki/Stratified_sampling)
 * [StratifiedKFold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html)
 * [Validation curves: plotting scores to evaluate models](https://scikit-learn.org/stable/modules/learning_curve.html)
@@ -23,3 +24,4 @@
 * [Regression Analysis: How Do I Interpret R-squared and Assess the Goodness-of-Fit?](https://blog.minitab.com/blog/adventures-in-statistics-2/regression-analysis-how-do-i-interpret-r-squared-and-assess-the-goodness-of-fit)
 * [Preprocessing data](https://scikit-learn.org/stable/modules/preprocessing.html)
 * [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
+* [A Gentle Introduction to Cross-Entropy for Machine Learning](https://machinelearningmastery.com/cross-entropy-for-machine-learning/)
