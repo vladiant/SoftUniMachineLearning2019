@@ -28,11 +28,11 @@ int main(int argc, char* argv[]) {
   // Default delimiter = ','
   // Default missing data fill = '?'
   auto raw_data = cv::ml::TrainData::loadFromCSV(
-              file_name,
-              0,  // Header lines not to be read as data
-              -1, // Last columns is the target (Default)
-              -1, // Traget is one column (Default)
-              "ord[0,2,10,11,12]cat[1,3,4-9,13,14]", ',', 'U');
+      file_name,
+      0,   // Header lines not to be read as data
+      -1,  // Last columns is the target (Default)
+      -1,  // Traget is one column (Default)
+      "ord[0,2,10,11,12]cat[1,3,4-9,13,14]", ',', 'U');
 
   const int n_samples = raw_data->getNSamples();
   if (n_samples == 0) {
@@ -124,13 +124,14 @@ int main(int argc, char* argv[]) {
   std::cout << "Missclassified test samples, %: "
             << d_tree->calcError(raw_data, true, cv::noArray()) << std::endl;
 
-
   // TODO: Predicted values are float numbers. They may represent possibility
   // for a label. However it is unclear how the possibility can be calculated
   // for more than two labels. This needs to be investigated.
 
-  // NOTE: In https://github.com/oreillymedia/Learning-OpenCV-3_examples/blob/master/example_21-01.cpp
-  // the target is the first column, so the first labels will be the target ones?
+  // NOTE: In
+  // https://github.com/oreillymedia/Learning-OpenCV-3_examples/blob/master/example_21-01.cpp
+  // the target is the first column, so the first labels will be the target
+  // ones?
 
   std::cout << "Done." << std::endl;
   return 0;

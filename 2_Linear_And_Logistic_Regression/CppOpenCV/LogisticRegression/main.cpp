@@ -9,9 +9,10 @@ int main(int argc, char *argv[]) {
   // Variables types set according to OpenCV rules
   // Default delimiter = ','
   // Default missing data fill = '?'
-  auto raw_data = cv::ml::TrainData::loadFromCSV(file_name,
-                                                 0 // Header lines not to be read as data
-                                                 );
+  auto raw_data =
+      cv::ml::TrainData::loadFromCSV(file_name,
+                                     0  // Header lines not to be read as data
+      );
 
   const int n_samples = raw_data->getNSamples();
   if (n_samples == 0) {
@@ -19,7 +20,8 @@ int main(int argc, char *argv[]) {
     exit(-1);
   }
 
-  std::cout << "Read " << n_samples << " samples from " << file_name << std::endl;
+  std::cout << "Read " << n_samples << " samples from " << file_name
+            << std::endl;
 
   const cv::Mat attributes_data = raw_data->getSamples();
   const cv::Mat labels_data = raw_data->getResponses();
@@ -63,18 +65,21 @@ int main(int argc, char *argv[]) {
   // for classifiers - as a percent of missclassified samples (0%-100%).
   // False - tested only on train data (all the data in this implementation)
   // Last argument - array to store the prediction results
-  std::cout << "Missclassified samples, %: " << logistic_regression->calcError(raw_data, false, cv::noArray())
+  std::cout << "Missclassified samples, %: "
+            << logistic_regression->calcError(raw_data, false, cv::noArray())
             << std::endl;
 
   logistic_regression->save("my.xml");
   // Load:
-  // auto loaded_logistic_regression = cv::Algorithm::load<cv::ml::LogisticRegression>("my.xml");
+  // auto loaded_logistic_regression =
+  // cv::Algorithm::load<cv::ml::LogisticRegression>("my.xml");
 
   for (int i = 0; i < labels_data.rows; i++) {
     const auto predicted = logistic_regression->predict(attributes_data.row(i));
     const auto expected = labels_data.at<float>(i, 0);
     if (predicted != expected)
-        std::cout << "Predicted: " << predicted << "  Expected: " << expected << std::endl;
+      std::cout << "Predicted: " << predicted << "  Expected: " << expected
+                << std::endl;
   }
 
   std::cout << "Done." << std::endl;
