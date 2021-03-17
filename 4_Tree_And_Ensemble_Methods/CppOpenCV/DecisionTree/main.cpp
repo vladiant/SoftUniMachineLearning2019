@@ -1,5 +1,5 @@
 #include <iostream>
-#include <opencv/cv.hpp>
+#include <opencv2/opencv.hpp>
 #include <opencv2/ml.hpp>
 
 void PrintSetHistogram(const cv::Mat& set) {
