@@ -6,8 +6,22 @@ import matplotlib.pyplot as plt
 
 # housing_data = pd.read_fwf("https://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data", header=None)
 housing_data = pd.read_fwf("../Data/housing.data", header=None)
-housing_data.columns = ["crime_rate", "zoned_land", "industry", "bounds_river", "nox_conc", "rooms", "age", "distance",
-                        "highways", "tax", "pt_ratio", "b_estimator", "pop_stat", "price"]
+housing_data.columns = [
+    "crime_rate",
+    "zoned_land",
+    "industry",
+    "bounds_river",
+    "nox_conc",
+    "rooms",
+    "age",
+    "distance",
+    "highways",
+    "tax",
+    "pt_ratio",
+    "b_estimator",
+    "pop_stat",
+    "price",
+]
 
 housing_data_input = housing_data.drop("price", axis=1)
 housing_data_output = housing_data["price"]
@@ -31,7 +45,7 @@ print("Model score: ", model.score(housing_data_input, housing_data_output))
 # Intercept
 # print(model.intercept_)
 
-'''
+"""
 for column_label in housing_data_input.columns:
     # print(column_label)
     plt.title(column_label)
@@ -40,7 +54,7 @@ for column_label in housing_data_input.columns:
     # plt.scatter((min_x, min_y), (max_x, max_y), label = "fitted data")
     plt.legend()
     plt.show()
-'''
+"""
 
 polynomial_features = PolynomialFeatures(2, interaction_only=False)
 polynomial_input = polynomial_features.fit_transform(housing_data_input)
@@ -52,9 +66,12 @@ polynomial_model = LinearRegression()
 polynomial_model.fit(polynomial_input, housing_data_output)
 
 # Check the accuracy score
-print("Polynomial model score:" , polynomial_model.score(polynomial_input, housing_data_output))
+print(
+    "Polynomial model score:",
+    polynomial_model.score(polynomial_input, housing_data_output),
+)
 
-'''
+"""
 for column_label in range(polynomial_input.shape[1]):
     # print(column_label)
     plt.title(column_label)
@@ -63,4 +80,4 @@ for column_label in range(polynomial_input.shape[1]):
     # plt.scatter((min_x, min_y), (max_x, max_y), label = "fitted data")
     plt.legend()
     plt.show()
-'''
+"""

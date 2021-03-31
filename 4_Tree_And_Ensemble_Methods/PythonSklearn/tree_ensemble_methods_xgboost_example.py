@@ -30,7 +30,9 @@ print(labels.info())
 print("features size ", features.shape)
 print("labels size ", labels.shape)
 
-train_features, test_features, train_labels, test_labels = train_test_split(features, labels, test_size=0.3, stratify=labels)
+train_features, test_features, train_labels, test_labels = train_test_split(
+    features, labels, test_size=0.3, stratify=labels
+)
 
 print("train features size ", train_features.shape)
 print("train labels size ", train_labels.shape)
@@ -45,11 +47,11 @@ model = XGBClassifier()
 model.fit(train_features, train_labels)
 
 print("train score", model.score(train_features, train_labels))
-print(classification_report(train_labels,  model.predict(train_features)))
+print(classification_report(train_labels, model.predict(train_features)))
 print("test score", model.score(test_features, test_labels))
-print(classification_report(test_labels,  model.predict(test_features)))
+print(classification_report(test_labels, model.predict(test_features)))
 
-'''
+"""
 train score 1.0
               precision    recall  f1-score   support
 
@@ -71,7 +73,7 @@ test score 0.9111111111111111
     accuracy                           0.91        45
    macro avg       0.92      0.92      0.92        45
 weighted avg       0.91      0.91      0.91        45
-'''
+"""
 
 X = iris_dataset.data[:, :2]  # Sepal length, sepal width
 y = iris_dataset.target

@@ -11,9 +11,23 @@ from sklearn.linear_model import LogisticRegression
 income_data = pd.read_csv("../Data/adult.data", sep=", ", header=None, engine="python")
 print(income_data.head())
 
-income_data.columns=["age", "workclass", "fnlwgt", "education", "education-num", "marital-status", "occupation", \
-                     "relationship", "race", "sex", "capital-gain", "capital-loss", "hours-per-week", "native-country",\
-                     "income_class"]
+income_data.columns = [
+    "age",
+    "workclass",
+    "fnlwgt",
+    "education",
+    "education-num",
+    "marital-status",
+    "occupation",
+    "relationship",
+    "race",
+    "sex",
+    "capital-gain",
+    "capital-loss",
+    "hours-per-week",
+    "native-country",
+    "income_class",
+]
 print(income_data.head())
 
 # plt.hist(income_data.fnlwgt)
@@ -22,7 +36,7 @@ plt.show()
 income_data = income_data.drop("fnlwgt", axis=1)
 
 # Check if set is balanced
-print(income_data.groupby("income_class").size()/len(income_data))
+print(income_data.groupby("income_class").size() / len(income_data))
 # Not balanced
 # income_class
 # <=50K    0.75919
@@ -74,12 +88,19 @@ print(scaler.transform(test_trasform))
 # Model for testing
 logistic_model = LogisticRegression(C=1e6)
 logistic_model.fit(income_data_attributes_scaled, income_data_labels)
-print("all data scaled score ", logistic_model.score(income_data_attributes_scaled, income_data_labels))
+print(
+    "all data scaled score ",
+    logistic_model.score(income_data_attributes_scaled, income_data_labels),
+)
 logistic_model.fit(income_data_attributes, income_data_labels)
-print("all data score ", logistic_model.score(income_data_attributes, income_data_labels))
+print(
+    "all data score ", logistic_model.score(income_data_attributes, income_data_labels)
+)
 
 # Split for training and testing
-attributes_train, attributes_test, labels_train, labels_test = train_test_split(income_data_attributes_scaled, income_data_labels, train_size=0.7)
+attributes_train, attributes_test, labels_train, labels_test = train_test_split(
+    income_data_attributes_scaled, income_data_labels, train_size=0.7
+)
 
 # Check the shapes
 print("attributes_train ", attributes_train.shape)

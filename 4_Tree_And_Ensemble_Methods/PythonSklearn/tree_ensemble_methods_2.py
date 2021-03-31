@@ -13,7 +13,7 @@ preset_iris_data = datasets.load_iris()
 
 iris_data = pd.DataFrame(preset_iris_data.data)
 
-iris_data.columns = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width']
+iris_data.columns = ["sepal_length", "sepal_width", "petal_length", "petal_width"]
 
 iris_data.append(pd.DataFrame(preset_iris_data.target))
 

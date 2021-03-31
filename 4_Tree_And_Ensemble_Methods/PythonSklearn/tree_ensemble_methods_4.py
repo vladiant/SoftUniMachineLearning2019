@@ -6,9 +6,23 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import AdaBoostClassifier
 
 adult_income_data = pd.read_csv("../Data/adult.data")
-adult_income_data.columns = ["age", "workclass", "fnlwgt", "education", "education-num", "marital-status", "occupation",
-                             "relationship", "race", "sex", "capital-gain", "capital-loss", "hours-per-week",
-                             "native-country", "income"]
+adult_income_data.columns = [
+    "age",
+    "workclass",
+    "fnlwgt",
+    "education",
+    "education-num",
+    "marital-status",
+    "occupation",
+    "relationship",
+    "race",
+    "sex",
+    "capital-gain",
+    "capital-loss",
+    "hours-per-week",
+    "native-country",
+    "income",
+]
 
 print(adult_income_data.columns)
 print(adult_income_data.head())
@@ -22,8 +36,9 @@ labels = adult_income_data.income
 attributes = pd.get_dummies(attributes)
 
 
-attributes_train, attributes_test, labels_train, labels_test = train_test_split(attributes, labels, train_size=0.7,
-                                                                                stratify=labels)
+attributes_train, attributes_test, labels_train, labels_test = train_test_split(
+    attributes, labels, train_size=0.7, stratify=labels
+)
 
 tree = DecisionTreeClassifier(max_depth=1)
 ada = AdaBoostClassifier(base_estimator=tree, n_estimators=100, learning_rate=0.1)

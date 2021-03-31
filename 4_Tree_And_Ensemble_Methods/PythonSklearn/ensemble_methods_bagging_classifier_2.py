@@ -23,7 +23,7 @@ np.random.seed(0)
 # linear models)
 estimators = [
     ("Tree", DecisionTreeRegressor()),
-    ("Bagging(Tree)", BaggingRegressor(DecisionTreeRegressor()))
+    ("Bagging(Tree)", BaggingRegressor(DecisionTreeRegressor())),
 ]
 
 n_estimators = len(estimators)
@@ -33,7 +33,7 @@ n_estimators = len(estimators)
 def f(x):
     x = x.ravel()
 
-    return np.exp(-x ** -2) + 1.5 * np.exp(-(x - 2) ** 2)
+    return np.exp(-(x ** -2)) + 1.5 * np.exp(-((x - 2) ** 2))
 
 
 def generate(n_samples, n_noise, n_repeat=1):
@@ -81,7 +81,7 @@ for n, (name, estimator) in enumerate(estimators):
         for j in range(n_repeat):
             y_error += (y_test[:, j] - y_predict[:, i]) ** 2
 
-    y_error /= (n_repeat * n_repeat)
+    y_error /= n_repeat * n_repeat
 
     y_n_noise = np.var(y_test, axis=1)
     y_bias = (f(X_test) - np.mean(y_predict, axis=1)) ** 2
@@ -90,11 +90,7 @@ for n, (name, estimator) in enumerate(estimators):
     print(
         "{0}: {1:.4f} (error) = {2:.4f} (bias^2) "
         " + {3:.4f} (var) + {4:.4f} (n_noise)".format(
-            name,
-            np.mean(y_error),
-            np.mean(y_bias),
-            np.mean(y_var),
-            np.mean(y_n_noise)
+            name, np.mean(y_error), np.mean(y_bias), np.mean(y_var), np.mean(y_n_noise)
         )
     )
 
@@ -115,7 +111,7 @@ for n, (name, estimator) in enumerate(estimators):
     plt.title(name)
 
     if n == n_estimators - 1:
-        plt.legend(loc=(1.1, .5))
+        plt.legend(loc=(1.1, 0.5))
 
     plt.subplot(2, n_estimators, n_estimators + n + 1)
     plt.plot(X_test, y_error, "r", label="$error(x)$")
@@ -127,7 +123,7 @@ for n, (name, estimator) in enumerate(estimators):
     plt.ylim([0, 0.1])
 
     if n == n_estimators - 1:
-        plt.legend(loc=(1.1, .5))
+        plt.legend(loc=(1.1, 0.5))
 
-plt.subplots_adjust(right=.75)
+plt.subplots_adjust(right=0.75)
 plt.show()

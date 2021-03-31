@@ -24,7 +24,7 @@ weights, weights1, params = [], [], []
 for c in range(-5, 5):
     model = LogisticRegression(C=10 ** c)
     model.fit(attributes, labels)
-    weights.append(model.coef_[1]) # Display only second class
+    weights.append(model.coef_[1])  # Display only second class
     weights1.append(model.coef_[0])
     params.append(10.0 ** c)
 

@@ -12,10 +12,17 @@ from sklearn.ensemble import AdaBoostClassifier
 
 # https://medium.com/berkeleyischool/how-to-use-machine-learning-to-predict-hospital-readmissions-part-1-bd137cbdba07
 # https://archive.ics.uci.edu/ml/datasets/diabetes+130-us+hospitals+for+years+1999-2008#
-diabetes_data = pd.read_csv("../Data/diabetic_data.zip", true_values=['YES'], false_values=['NO'], na_values=['?'])
+diabetes_data = pd.read_csv(
+    "../Data/diabetic_data.zip",
+    true_values=["YES"],
+    false_values=["NO"],
+    na_values=["?"],
+)
 
 # Remove insignificant columns
-diabetes_data = diabetes_data.drop(["encounter_id", "patient_nbr", "payer_code"], axis=1)
+diabetes_data = diabetes_data.drop(
+    ["encounter_id", "patient_nbr", "payer_code"], axis=1
+)
 
 diabetes_attributes = diabetes_data.drop("readmitted", axis=1)
 diabetes_labels = diabetes_data.readmitted
@@ -28,8 +35,14 @@ scaler = MinMaxScaler()
 scaler.fit(diabetes_attributes)
 diabetes_attributes = scaler.transform(diabetes_attributes)
 
-diabetes_attributes_train, diabetes_attributes_test, diabetes_labels_train, diabetes_labels_test \
-    = train_test_split(diabetes_attributes, diabetes_labels, train_size=0.9, stratify=diabetes_labels)
+(
+    diabetes_attributes_train,
+    diabetes_attributes_test,
+    diabetes_labels_train,
+    diabetes_labels_test,
+) = train_test_split(
+    diabetes_attributes, diabetes_labels, train_size=0.9, stratify=diabetes_labels
+)
 
 print("AdaBoostClassifier model fit")
 ada_boost = AdaBoostClassifier(DecisionTreeClassifier(max_depth=3), n_estimators=200)
@@ -43,7 +56,7 @@ test_predictions_log_regr = ada_boost.predict(diabetes_attributes_test)
 print("Test data")
 print(classification_report(diabetes_labels_test, test_predictions_log_regr))
 
-'''
+"""
 n_estimators=50
 
               precision    recall  f1-score   support
@@ -65,4 +78,4 @@ weighted avg       0.57      0.59      0.55     91589
     accuracy                           0.59     10177
    macro avg       0.51      0.42      0.42     10177
 weighted avg       0.56      0.59      0.55     10177
-'''
+"""

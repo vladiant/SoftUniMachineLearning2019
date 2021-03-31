@@ -28,7 +28,9 @@ print(labels.info())
 print("features size ", features.shape)
 print("labels size ", labels.shape)
 
-train_features, test_features, train_labels, test_labels = train_test_split(features, labels, test_size=0.3)
+train_features, test_features, train_labels, test_labels = train_test_split(
+    features, labels, test_size=0.3
+)
 
 print("train features size ", train_features.shape)
 print("train labels size ", train_labels.shape)
@@ -44,8 +46,10 @@ print("test score", model.score(test_features, test_labels))
 for column_label in features.columns:
     # print(column_label)
     plt.title(column_label)
-    plt.scatter(test_features[column_label], test_labels, label = "original data")
-    plt.scatter(test_features[column_label], model.predict(test_features), label = "fitted data")
+    plt.scatter(test_features[column_label], test_labels, label="original data")
+    plt.scatter(
+        test_features[column_label], model.predict(test_features), label="fitted data"
+    )
     # plt.scatter((min_x, min_y), (max_x, max_y), label = "fitted data")
     plt.legend()
     plt.show()

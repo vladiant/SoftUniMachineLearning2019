@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
+
 # SVC, LinearSVC - classification
 # SVR - regression
 from sklearn.svm import SVC, LinearSVC, SVR
@@ -29,7 +30,9 @@ print(labels.info())
 print("features size ", features.shape)
 print("labels size ", labels.shape)
 
-train_features, test_features, train_labels, test_labels = train_test_split(features, labels, test_size=0.2, stratify=labels)
+train_features, test_features, train_labels, test_labels = train_test_split(
+    features, labels, test_size=0.2, stratify=labels
+)
 
 print("train features size ", train_features.shape)
 print("train labels size ", train_labels.shape)

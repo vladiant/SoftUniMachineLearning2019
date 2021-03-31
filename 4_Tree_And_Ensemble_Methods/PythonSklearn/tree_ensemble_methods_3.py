@@ -11,9 +11,23 @@ from sklearn.ensemble import RandomForestClassifier
 
 # adult_income_data = pd.read_csv("https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data")
 adult_income_data = pd.read_csv("../Data/adult.data")
-adult_income_data.columns = ["age", "workclass", "fnlwgt", "education", "education-num", "marital-status", "occupation",
-                             "relationship", "race", "sex", "capital-gain", "capital-loss", "hours-per-week",
-                             "native-country", "income"]
+adult_income_data.columns = [
+    "age",
+    "workclass",
+    "fnlwgt",
+    "education",
+    "education-num",
+    "marital-status",
+    "occupation",
+    "relationship",
+    "race",
+    "sex",
+    "capital-gain",
+    "capital-loss",
+    "hours-per-week",
+    "native-country",
+    "income",
+]
 
 print(adult_income_data.columns)
 print(adult_income_data.head())
@@ -30,8 +44,9 @@ scaler = MinMaxScaler()
 # scaler.fit_transform(attributes)
 # print(attributes.head())
 
-attributes_train, attributes_test, labels_train, labels_test = train_test_split(attributes, labels, train_size=0.7,
-                                                                                stratify=labels)
+attributes_train, attributes_test, labels_train, labels_test = train_test_split(
+    attributes, labels, train_size=0.7, stratify=labels
+)
 
 print(attributes_train.shape)
 print(attributes_test.shape)
@@ -66,12 +81,16 @@ print("f1 score test")
 print(f1_score(labels_test, predicted_labels_test, pos_label=" >50K"))
 
 params = {
-    "n_estimators" : [10, 100, 200, 250, 300],
-    "max_depth": [2, 4, 10, 15, 20, 25, 28, 30]
+    "n_estimators": [10, 100, 200, 250, 300],
+    "max_depth": [2, 4, 10, 15, 20, 25, 28, 30],
 }
 
 # Use pickle here!
-grid = GridSearchCV(RandomForestClassifier(max_depth=1), params, scoring=make_scorer(f1_score, pos_label=" >50K"))
+grid = GridSearchCV(
+    RandomForestClassifier(max_depth=1),
+    params,
+    scoring=make_scorer(f1_score, pos_label=" >50K"),
+)
 
 grid.fit(attributes_train, labels_train)
 print(grid.best_params_)
@@ -93,7 +112,7 @@ print("test scores")
 predicted_labels_test = grid.best_estimator_.predict(attributes_test)
 print(classification_report(labels_test, predicted_labels_test))
 
-'''
+"""
 Unlimited depth
 0.9846437346437347
 0.8594389844389845
@@ -114,4 +133,4 @@ weighted avg       0.98      0.98      0.98     22792
     accuracy                           0.86      9768
    macro avg       0.82      0.78      0.79      9768
 weighted avg       0.85      0.86      0.85      9768
-'''
+"""

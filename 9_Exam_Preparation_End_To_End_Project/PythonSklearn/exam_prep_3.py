@@ -14,10 +14,17 @@ from sklearn.decomposition import PCA
 
 # https://medium.com/berkeleyischool/how-to-use-machine-learning-to-predict-hospital-readmissions-part-1-bd137cbdba07
 # https://archive.ics.uci.edu/ml/datasets/diabetes+130-us+hospitals+for+years+1999-2008#
-diabetes_data = pd.read_csv("../Data/diabetic_data.zip", true_values=['YES'], false_values=['NO'], na_values=['?'])
+diabetes_data = pd.read_csv(
+    "../Data/diabetic_data.zip",
+    true_values=["YES"],
+    false_values=["NO"],
+    na_values=["?"],
+)
 
 # Remove insignificant columns
-diabetes_data = diabetes_data.drop(["encounter_id", "patient_nbr", "payer_code"], axis=1)
+diabetes_data = diabetes_data.drop(
+    ["encounter_id", "patient_nbr", "payer_code"], axis=1
+)
 
 diabetes_attributes = diabetes_data.drop("readmitted", axis=1)
 diabetes_labels = diabetes_data.readmitted
@@ -30,8 +37,14 @@ scaler = MinMaxScaler()
 scaler.fit(diabetes_attributes)
 diabetes_attributes = scaler.transform(diabetes_attributes)
 
-diabetes_attributes_train, diabetes_attributes_test, diabetes_labels_train, diabetes_labels_test \
-    = train_test_split(diabetes_attributes, diabetes_labels, train_size=0.9, stratify=diabetes_labels)
+(
+    diabetes_attributes_train,
+    diabetes_attributes_test,
+    diabetes_labels_train,
+    diabetes_labels_test,
+) = train_test_split(
+    diabetes_attributes, diabetes_labels, train_size=0.9, stratify=diabetes_labels
+)
 
 # PCA to reduce dimensionality
 print("PCA calculation")
@@ -58,10 +71,20 @@ print("Data < 90% ", len(total_variance[total_variance < 0.9]))
 
 diabetes_attributes_pca = pca.transform(diabetes_attributes)
 
-diabetes_attributes_train, diabetes_attributes_test, diabetes_labels_train, diabetes_labels_test \
-    = train_test_split(diabetes_attributes_pca, diabetes_labels, train_size=0.9, stratify=diabetes_labels)
+(
+    diabetes_attributes_train,
+    diabetes_attributes_test,
+    diabetes_labels_train,
+    diabetes_labels_test,
+) = train_test_split(
+    diabetes_attributes_pca, diabetes_labels, train_size=0.9, stratify=diabetes_labels
+)
 
-logistic_regressions = [LogisticRegression(C=100), LogisticRegression(C=1e5), LogisticRegression(C=1e7)]
+logistic_regressions = [
+    LogisticRegression(C=100),
+    LogisticRegression(C=1e5),
+    LogisticRegression(C=1e7),
+]
 
 for model in logistic_regressions:
     print("Logistic regression model C= ", model.C)
@@ -76,7 +99,7 @@ for model in logistic_regressions:
     print("Test results")
     print(classification_report(diabetes_labels_test, test_predictions_log_regr))
 
-'''
+"""
 LogisticRegression(C=100):
 Train results
               precision    recall  f1-score   support
@@ -147,4 +170,4 @@ Test results
     accuracy                           0.58     10177
    macro avg       0.55      0.40      0.37     10177
 weighted avg       0.56      0.58      0.52     10177
-'''
+"""

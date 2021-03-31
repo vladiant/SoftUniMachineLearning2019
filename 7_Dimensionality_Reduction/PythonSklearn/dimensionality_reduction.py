@@ -43,7 +43,9 @@ iris_attributes = iris_data_transformed[:, :2]
 
 lr_normal = LogisticRegression(C=1e5).fit(iris_data, iris_labels)
 # lr_transofrmed = LogisticRegression(C=1e5).fit(iris_attributes, iris_labels)
-lr_transofrmed = LogisticRegression(C=1e5).fit(iris_attributes[:, 0].reshape(-1, 1), iris_labels)
+lr_transofrmed = LogisticRegression(C=1e5).fit(
+    iris_attributes[:, 0].reshape(-1, 1), iris_labels
+)
 
 print(lr_normal.score(iris_data, iris_labels))
 # print(lr_transofrmed.score(iris_attributes, iris_labels))
@@ -53,8 +55,8 @@ print(lr_transofrmed.score(iris_attributes[:, 0].reshape(-1, 1), iris_labels))
 isomap = Isomap(n_neighbors=10, n_components=2)
 iris_data_isomap = isomap.fit_transform(iris_data)
 
-plt.scatter(iris_data_isomap[:, 0], iris_data_isomap[:,1], c = iris_labels)
+plt.scatter(iris_data_isomap[:, 0], iris_data_isomap[:, 1], c=iris_labels)
 plt.show()
 
-plt.scatter(iris_data_transformed[:, 0], iris_data_transformed[:,1], c = iris_labels)
+plt.scatter(iris_data_transformed[:, 0], iris_data_transformed[:, 1], c=iris_labels)
 plt.show()

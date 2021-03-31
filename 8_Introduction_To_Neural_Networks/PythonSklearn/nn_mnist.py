@@ -45,7 +45,9 @@ attributes /= 255
 
 # print(attributes.mean(axis=0))
 
-attributes_train, attributes_test, labels_train, labels_test = train_test_split(attributes, labels, train_size=0.8, stratify=labels)
+attributes_train, attributes_test, labels_train, labels_test = train_test_split(
+    attributes, labels, train_size=0.8, stratify=labels
+)
 
 # Check the splitting
 # print(attributes_train.shape)

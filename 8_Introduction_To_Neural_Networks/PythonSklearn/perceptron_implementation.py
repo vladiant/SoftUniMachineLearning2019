@@ -20,11 +20,11 @@ def prediction(X, W, b):
 def perceptronStep(X, y, W, b, learn_rate=0.01):
     for i in range(len(X)):
         y_pred = prediction(X[i], W, b)
-        if (y[i] - y_pred == 1):
+        if y[i] - y_pred == 1:
             W[0] += X[i][0] * learn_rate
             W[1] += X[i][1] * learn_rate
             b += learn_rate
-        elif (y[i] - y_pred == -1):
+        elif y[i] - y_pred == -1:
             W[0] -= X[i][0] * learn_rate
             W[1] -= X[i][1] * learn_rate
             b -= learn_rate
@@ -73,7 +73,7 @@ y2 = X * theta + intercept
 
 print(theta, intercept)
 
-plt.plot(X, y2, color='red')
+plt.plot(X, y2, color="red")
 axes = plt.gca()
 axes.set_xlim([0, 1])
 axes.set_ylim([0, 1])

@@ -14,9 +14,9 @@ preset_iris_data = datasets.load_iris()
 iris_data = pd.DataFrame(preset_iris_data.data)
 
 # See preset_iris_data.DESCR
-iris_data.columns = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width']
+iris_data.columns = ["sepal_length", "sepal_width", "petal_length", "petal_width"]
 
-iris_data['class'] = pd.DataFrame(preset_iris_data.target)
+iris_data["class"] = pd.DataFrame(preset_iris_data.target)
 
 print(iris_data.head())
 
@@ -24,18 +24,26 @@ print(iris_data.head())
 print(iris_data.shape)
 # Prints the number of data for each class
 # To check that the data is balanced
-print(iris_data.groupby('class').size())
+print(iris_data.groupby("class").size())
 
-for class_name, data in iris_data.groupby('class'):
+for class_name, data in iris_data.groupby("class"):
     # plt.scatter(data.petal_width, data.petal_length, label=class_name)
-    plt.scatter(data.petal_width, data.petal_length, label=preset_iris_data.target_names[class_name])
+    plt.scatter(
+        data.petal_width,
+        data.petal_length,
+        label=preset_iris_data.target_names[class_name],
+    )
 
 plt.legend()
 plt.show()
 
-for class_name, data in iris_data.groupby('class'):
+for class_name, data in iris_data.groupby("class"):
     # plt.scatter(data.sepal_width, data.sepal_length, label=class_name)
-    plt.scatter(data.sepal_width, data.sepal_length, label=preset_iris_data.target_names[class_name])
+    plt.scatter(
+        data.sepal_width,
+        data.sepal_length,
+        label=preset_iris_data.target_names[class_name],
+    )
 
 plt.legend()
 plt.show()
@@ -55,7 +63,12 @@ iris_model.fit(iris_data_input, iris_data_output)
 print(iris_model.score(iris_data_input, iris_data_output))
 
 # Check prediction for some data
-print([(preset_iris_data.target_names[x]) for x in iris_model.predict(iris_data_input[:10])])
+print(
+    [
+        (preset_iris_data.target_names[x])
+        for x in iris_model.predict(iris_data_input[:10])
+    ]
+)
 
 # Get random sample
 testing_sample = iris_data.sample(10)
@@ -68,8 +81,12 @@ print(testing_sample_predict)
 for predicted, expected in zip(testing_sample_predict, testing_sample_output):
     print(predicted, expected)
     if predicted != expected:
-        print("Expected: ", preset_iris_data.target_names[expected], "  Predicted: ",
-              preset_iris_data.target_names[predicted])
+        print(
+            "Expected: ",
+            preset_iris_data.target_names[expected],
+            "  Predicted: ",
+            preset_iris_data.target_names[predicted],
+        )
 
 # Linear coefficient
 print(iris_model.coef_)

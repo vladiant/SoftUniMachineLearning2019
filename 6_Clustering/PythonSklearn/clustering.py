@@ -3,12 +3,14 @@
 import matplotlib.pyplot as plt
 
 from sklearn.datasets import make_blobs
+
 attributes, clusters = make_blobs(cluster_std=1)
 
 plt.scatter(attributes[:, 0], attributes[:, 1], c=clusters)
 plt.show()
 
 from sklearn.cluster import KMeans
+
 attributes, clusters = make_blobs()
 
 # Better n_init to be large!
